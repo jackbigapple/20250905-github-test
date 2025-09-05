@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>優雅老化資訊圖表</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 
+    Chosen Palette: Energetic & Playful (#FF6B6B, #FFD166, #06D6A0, #118AB2, #073B4C)
+    Application Structure Plan: The infographic follows a linear, top-to-bottom narrative mirroring the source report's five chapters: 1. Mindset Shift, 2. Health & Behavior, 3. Social Connection, 4. Family Communication, 5. Local Resources. This structure guides the user through a logical progression from internal preparation to external action. Key data points are transformed into visual elements to break up text and improve comprehension.
+    Visualization & Content Choices:
+    - Mind-Body Cycle: Report text -> Goal: Organize/Relationships -> Viz: HTML/CSS Flow Diagram -> Justification: Visually represents the feedback loop between mental and physical health more effectively than text. Method: HTML/Tailwind. CONFIRMED: NO SVG/Mermaid.
+    - Exercise Recommendations: Report data (15 mins/day) -> Goal: Inform -> Viz: Big Number Stat + Donut Chart -> Justification: A large stat grabs attention, while the donut chart clearly shows the recommended balance of exercise types. Library: Chart.js. CONFIRMED: NO SVG.
+    - Path to Contribution: Report text -> Goal: Organize -> Viz: HTML/CSS Flow Chart -> Justification: Simplifies the multi-step process from self-care to community contribution into an easy-to-follow visual path. Method: HTML/Tailwind. CONFIRMED: NO SVG/Mermaid.
+    - Communication Tips: Report text -> Goal: Organize -> Viz: Styled List/Cards -> Justification: Presents actionable communication tips in a scannable, organized format that is less intimidating than a dense paragraph. Method: HTML/Tailwind. CONFIRMED: NO SVG.
+    CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. 
+    -->
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #F7F9FB;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            line-height: 1;
+            color: #118AB2;
+        }
+    </style>
+</head>
+
+<body class="text-[#073B4C]">
+
+    <header class="bg-[#118AB2] text-white text-center py-12 px-4">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">如何優雅地變老？</h1>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto">一場從內到外的全面性計畫，擁抱充滿價值與意義的黃金時代。</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#073B4C]">第一章：心理與心態的轉變</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-[#118AB2]">🌟 重新定義「老」</h3>
+                    <p class="mb-4">
+                        拋棄「老而無用」的負面標籤，擁抱「壯世代」的活力。晚年是智慧與經驗的結晶，是人生的「黃金時代」。退休後，個人價值應從「職位」轉向「專業」與「意義」，讓累積的經驗在新的舞台發光。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-[#118AB2]">🔄 身心正向循環</h3>
+                    <p class="mb-4">積極的心態是生理健康的重要驅動力。樂觀能促進血清素分泌，強化免疫系統，並驅使我們採取更健康的行為。</p>
+                    <div class="flex flex-col items-center space-y-2 text-center">
+                        <div class="p-3 bg-[#FFD166] rounded-full font-bold text-sm">積極心態</div>
+                        <div class="flow-arrow">&darr;</div>
+                        <div class="p-3 bg-[#06D6A0] rounded-full font-bold text-sm">主動健康行為</div>
+                        <div class="flow-arrow">&darr;</div>
+                        <div class="p-3 bg-[#FF6B6B] rounded-full font-bold text-sm">身體健康</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#073B4C]">第二章：身體與行為的準備</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-[#118AB2]">🍽️ 品味健康的飲食指南</h3>
+                    <ul class="space-y-3 list-inside list-disc">
+                        <li><strong class="text-[#06D6A0]">優質蛋白：</strong> 魚、瘦肉、豆類，預防肌肉流失。</li>
+                        <li><strong class="text-[#06D6A0]">維生素礦物質：</strong> 多樣蔬果、全穀物，維持生理機能。</li>
+                        <li><strong class="text-[#06D6A0]">飲食質地：</strong> 食材切細煮軟，易於消化吸收。</li>
+                        <li><strong class="text-[#06D6A0]">口味調整：</strong> 減鹽、糖、油，多用天然香料。</li>
+                        <li><strong class="text-[#06D6A0]">咀嚼好處：</strong> 「咀嚼」本身就能活化大腦，有助維持認知功能。</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-center text-[#118AB2]">💪 動起來，延緩衰老</h3>
+                    <div class="text-center mb-4">
+                        <p class="text-lg">研究發現，每天只要運動</p>
+                        <p class="text-6xl font-bold my-2 text-[#FF6B6B]">15</p>
+                        <p class="text-lg">分鐘，就能顯著延壽並降低多種疾病風險。</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="exerciseChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#073B4C]">第三章：社會與人際的連結</h2>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold mb-6 text-center text-[#118AB2]">🤝 從「獨處」到「貢獻」的價值之旅</h3>
+                <p class="text-center mb-8 max-w-2xl mx-auto">
+                    孤獨感源於心靈的空虛，而非物理上的獨處。真正的解方，是將自己從「被服務者」轉變為「貢獻者」，在付出中找到無可取代的價值。</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-center">
+                    <div class="p-4 rounded-lg bg-gray-100 shadow-sm">
+                        <div class="text-4xl mb-2">🏠</div>
+                        <h4 class="font-bold text-lg">穩固基礎</h4>
+                        <p>顧好身體、保好老本</p>
+                    </div>
+                    <div class="flow-arrow mx-4 my-2 md:my-0">&rarr;</div>
+                    <div class="p-4 rounded-lg bg-gray-100 shadow-sm">
+                        <div class="text-4xl mb-2">🎨</div>
+                        <h4 class="font-bold text-lg">培養興趣</h4>
+                        <p>終身學習、尋找樂趣</p>
+                    </div>
+                    <div class="flow-arrow mx-4 my-2 md:my-0">&rarr;</div>
+                    <div class="p-4 rounded-lg bg-gray-100 shadow-sm">
+                        <div class="text-4xl mb-2">🎁</div>
+                        <h4 class="font-bold text-lg">服務他人</h4>
+                        <p>投入志工、兼職工作</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#073B4C]">第四章：家庭的支持與溝通</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-[#118AB2]">👨‍👩‍👧‍👦 晚輩的角色</h3>
+                    <p>放下傳統孝道包袱，避免過度照顧的壓力。應建立適度心理界線，以「賦能」而非「事事包辦」的模式，鼓勵長者找到自己的生活重心，並善用社會資源共同分擔。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-[#118AB2]">💬 開啟敏感話題的藝術</h3>
+                    <ul class="space-y-2">
+                        <li><strong class="text-[#FF6B6B]">財務規劃：</strong> 以「專案管理」角度，正面討論退休規劃。</li>
+                        <li><strong class="text-[#FF6B6B]">遺產繼承：</strong> 召開家庭會議，理性討論，避免未來紛爭。</li>
+                        <li><strong class="text-[#FF6B6B]">醫療後事：</strong> 提前了解意願，表達尊重與支持，讓長者安心。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#073B4C]">第五章：在地實踐指南 (以台北市內湖區為例)</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-[#FF6B6B]">
+                    <h4 class="font-bold text-lg">弘道老人福利基金會</h4>
+                    <p class="text-sm">提供居家關懷、長者課程、社區劇場等活動。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-[#FFD166]">
+                    <h4 class="font-bold text-lg">內湖區老人服務中心</h4>
+                    <p class="text-sm">開辦「長青學苑」多元課程，並提供文康休閒活動。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-[#06D6A0]">
+                    <h4 class="font-bold text-lg">市立圖書館樂齡中心</h4>
+                    <p class="text-sm">提供以「科技‧環保」為特色的多元課程，並招募志工。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-[#118AB2]">
+                    <h4 class="font-bold text-lg">老人福利關懷協會</h4>
+                    <p class="text-sm">推動「樂齡共學堂」，並提供關懷訪視、居家修繕等服務。</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#073B4C] text-white text-center mt-16 py-8 px-4">
+        <p class="font-bold">優雅變老，是一場持續的生命藝術。</p>
+        <p class="text-sm mt-2">將藍圖化為行動，從今天開始，為黃金歲月做好準備。</p>
+    </footer>
+
+    <script>
+        const ctx = document.getElementById('exerciseChart').getContext('2d');
+        const exerciseChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['有氧運動', '肌力訓練', ['平衡與', '複合式訓練']],
+                datasets: [{
+                    label: '運動類型建議佔比',
+                    data: [45, 35, 20],
+                    backgroundColor: [
+                        '#FF6B6B',
+                        '#FFD166',
+                        '#06D6A0',
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 3,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                family: "'Noto Sans TC', sans-serif",
+                                size: 14,
+                            },
+                            color: '#073B4C'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function (tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                } else {
+                                    return label;
+                                }
+                            },
+                            label: function (context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
